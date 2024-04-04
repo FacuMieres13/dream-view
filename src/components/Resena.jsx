@@ -30,13 +30,13 @@ const Resena = () => {
                     <div className='w-full h-14'>
                         <fieldset className='w-full h-full border-solid border-2 px-4 py-2 border-violeta rounded-lg'>
                             <legend className='text-xs pr-2 pl-1 font-semibold'>Seleccione pelicula</legend>
-                            <select onChange={changePelicula} className='text-sm font-bold outline-none bg-transparent border-none h-full w-full' type="text" minlength="4" />
+                            <select onChange={changePelicula} className='text-sm font-bold outline-none bg-transparent border-none h-full w-full' type="text" minLength="4" />
                         </fieldset>
                     </div>
                     <div className='w-full h-14'>
                         <fieldset className='w-full h-full border-solid border-2 px-4 py-2 border-violeta rounded-lg'>
                             <legend className='text-xs pr-2 pl-1 font-semibold'>Nombre Completo</legend>
-                            <input onChange={changeName} className='text-sm font-bold outline-none bg-transparent border-none h-full w-full' type="text" minlength="4" required />
+                            <input onChange={changeName} className='text-sm font-bold outline-none bg-transparent border-none h-full w-full' type="text" minLength="4" required />
                         </fieldset>
                     </div>
                     <div className='w-full h-14'>

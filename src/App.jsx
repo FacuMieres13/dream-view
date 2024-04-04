@@ -5,24 +5,26 @@ import Carousel from "./components/Carousel";
 import Cartelera from "./components/Cartelera";
 import Header from './components/Header';
 import Resena from "./components/Resena";
-import { fetchData } from "./utilities/Peliculas.jsx"
-import { peliculas } from "autoprefixer";
 
-const Component = () => {
-  const [peliculas, setData] = useState(null);
+const App = () => {
+  const [peliculas, setPeliculas] = useState([]);
+
   useEffect(() => {
-    const fetchDataAsync = async () => {
+    const fetchData = async () => {
       try {
-        const result = await fetchData();
-        setData(result);
+        const response = await fetch('https://raw.githubusercontent.com/wtuydev/test-json/main/films.json');
+        const data = await response.json();
+        const dataFilms = data.movies
+        setPeliculas(dataFilms);
+        console.log('Data fetched:', dataFilms);
       } catch (error) {
-
+        console.error('Error fetching data:', error);
       }
     };
-    fetchDataAsync();
+
+    fetchData();
   }, []);
-}
-function App() {
+
   return (
     <div className="p-0 w-full">
       <Header />
@@ -31,6 +33,6 @@ function App() {
       <Resena />
     </div>
   );
-}
+};
 
 export default App;
