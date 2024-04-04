@@ -3,29 +3,19 @@ import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
 import { RxDotFilled } from 'react-icons/rx';
 import  resena  from '../../public/media/resena.svg'
 import  trailer  from '../../public/media/trailer.svg'
-const Carousel = () => {
-  const slides = [
-    {
-      url: 'https://m.media-amazon.com/images/M/MV5BNmQ0ODBhMjUtNDRhOC00MGQzLTk5MTAtZDliODg5NmU5MjZhXkEyXkFqcGdeQXVyNDUyOTg3Njg@._V1_.jpg',
-    },
-    {
-      url: 'https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg',
-    },
-    {
-      url: 'https://m.media-amazon.com/images/M/MV5BN2EyZjM3NzUtNWUzMi00MTgxLWI0NTctMzY4M2VlOTdjZWRiXkEyXkFqcGdeQXVyNDUzOTQ5MjY@._V1_.jpg',
-    }
-  ];
+const Carousel = ({poster, title, description}) => {
+  const posters = poster
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const prevSlide = () => {
     const isFirstSlide = currentIndex === 0;
-    const newIndex = isFirstSlide ? slides.length - 1 : currentIndex - 1;
+    const newIndex = isFirstSlide ? posters.length - 1 : currentIndex - 1;
     setCurrentIndex(newIndex);
   };
 
   const nextSlide = () => {
-    const isLastSlide = currentIndex === slides.length - 1;
+    const isLastSlide = currentIndex === posters.length - 1;
     const newIndex = isLastSlide ? 0 : currentIndex + 1;
     setCurrentIndex(newIndex);
   };
@@ -38,20 +28,20 @@ const Carousel = () => {
     <div className='h-[580px] w-full m-auto relative group'>
       <div
         style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7)), url(${slides[currentIndex].url})`,
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7)), url(${posters})`,
         }}
         className='w-full h-full bg-center bg-cover duration-500 relative flex items-center justify-center'
       >
         <div className='w-screen  flex items-center justify-center'>
           <div className='w-60 p-0 m-0'>
-            <img className='w-10' src={slides[currentIndex].url} alt="" />
-            <img className='w-72' src={slides[currentIndex].url} alt="" />
+            <img className='w-10' src={posters} alt="" />
+            <img className='w-72' src={posters} alt="" />
           </div>
           <div className='flex flex-col h-56 align-middle w-96'>
             <div className='bg-fondoSinopsis w-full h-fit bg-opacity-60 p-4 rounded-tr-md rounded-br-md border-t-4 border-r-4 border-b-4 border-violeta'>
-              <h1 className='text-3xl w-80 text-black'>Titulo de la pelicula</h1>
+              <h1 className='text-3xl w-80 text-black'>{title}</h1>
               <hr className='w-80  border-black' />
-              <p className='w-80 h-full'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum voluptatem, fuga corporis illo deleniti impedit tempore consequuntur, excepturi itaque accusamus saepe dolorem quis facere voluptate dolorum ipsam. Impedit, omnis officiis?</p>
+              <p className='w-80 h-full'>{description}</p>
             </div>
             <div className='flex h-full justify-around items-center mt-0'>
             <section className='flex flex-col items-center justify-center'>

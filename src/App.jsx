@@ -28,9 +28,9 @@ const App = () => {
   return (
     <div className="p-0 w-full">
       <Header />
-      <Carousel />
+      <Carousel title={peliculas.title} description={peliculas.description} poster={peliculas.poster}/>
       <Cartelera peliculas={peliculas} />
-      <Resena />
+      <Resena peliculas={peliculas} />
     </div>
   );
 };
