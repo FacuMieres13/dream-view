@@ -42,7 +42,7 @@ const Carousel = () => {
         }}
         className='w-full h-full bg-center bg-cover duration-500 relative flex items-center justify-center'
       >
-        <div className='lg:w-screen flex items-center justify-center md:flex flex-col'>
+        <div className='w-screen  flex items-center justify-center'>
           <div className='w-60 p-0 m-0'>
             <img className='w-10' src={slides[currentIndex].url} alt="" />
             <img className='w-72' src={slides[currentIndex].url} alt="" />
@@ -51,7 +51,7 @@ const Carousel = () => {
             <div className='bg-fondoSinopsis w-full h-fit bg-opacity-60 p-4 rounded-tr-md rounded-br-md border-t-4 border-r-4 border-b-4 border-violeta'>
               <h1 className='text-3xl w-80 text-black'>Titulo de la pelicula</h1>
               <hr className='w-80  border-black' />
-              <p className='w-80 h-full hidden md:block'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum voluptatem, fuga corporis illo deleniti impedit tempore consequuntur, excepturi itaque accusamus saepe dolorem quis facere voluptate dolorum ipsam. Impedit, omnis officiis?</p>
+              <p className='w-80 h-full'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum voluptatem, fuga corporis illo deleniti impedit tempore consequuntur, excepturi itaque accusamus saepe dolorem quis facere voluptate dolorum ipsam. Impedit, omnis officiis?</p>
             </div>
             <div className='flex h-full justify-around items-center mt-0'>
             <section className='flex flex-col items-center justify-center'>
