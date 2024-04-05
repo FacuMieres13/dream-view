@@ -5,9 +5,11 @@ import Carousel from "./components/Carousel";
 import Cartelera from "./components/Cartelera";
 import Header from './components/Header';
 import Resena from "./components/Resena";
+import Loading from "./components/Loading";
 
 const App = () => {
   const [peliculas, setPeliculas] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,18 +22,24 @@ const App = () => {
       } catch (error) {
         console.error('Error fetching data:', error);
       }
+      setLoading(false);
     };
 
     fetchData();
   }, []);
 
   return (
-    <div className="p-0 w-full">
-      <Header />
-      <Carousel title={peliculas.title} description={peliculas.description} poster={peliculas.poster}/>
-      <Cartelera peliculas={peliculas} />
-      <Resena peliculas={peliculas} />
-    </div>
+    <>
+      {
+        loading ? <Loading /> :
+          <div className="p-0 w-full relative">
+            <Header />
+            <Carousel peliculas={peliculas} />
+            <Cartelera peliculas={peliculas} />
+            <Resena peliculas={peliculas} />
+          </div>
+      }
+    </>
   );
 };
 
