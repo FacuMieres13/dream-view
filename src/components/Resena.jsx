@@ -61,8 +61,8 @@ const Resena = ({ peliculas }) => {
                         </fieldset>
                     </div>
                     <div className='flex justify-between'>
-                        <button type="submit" className='px-8 mb:px-16 py-2 border-2 font-semibold rounded-md border-violeta m-3'>Finalizar</button>
-                        <button className='px-8 mb:px-16 py-2 border-2 font-semibold rounded-md border-violeta m-3' type="reset">Reiniciar</button>
+                        <button type="submit" className='px-8 mb:px-8 sm:px-16 py-2 border-2 font-semibold rounded-md border-violeta m-3'>Finalizar</button>
+                        <button className='px-8 mb:px-8 sm:px-16 py-2 border-2 font-semibold rounded-md border-violeta m-3' type="reset">Reiniciar</button>
                     </div>
                 </form>
                 <img className='absolute h-96 bottom-40 right-0 w-2/6 align-middle hidden mb:inline-block' src={pop2} alt="" />
