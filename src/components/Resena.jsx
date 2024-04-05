@@ -3,38 +3,41 @@ import pop2 from '../../public/media/pop2.svg'
 import Modal from './Modal'
 import { useState } from 'react'
 const Resena = ({ peliculas }) => {
-    const [showModal, setShowMyModal] = useState(false);
+    const [showModal, setShowModal] = useState(false);
     const [nombre, setName] = useState('');
     const [pelicula, setPelicula] = useState('');
-    console.log(showModal);
-    console.log(peliculas);
 
     const changeName = (event) => {
         setName(event?.target?.value || '');
     }
 
     const changePelicula = (event) => {
-        setPelicula(event?.target?.value || '');
+        console.log(peliculas[event?.target?.value].title)
+        setPelicula(peliculas[event?.target?.value].title || '');
     }
 
     const cerrarModal = () => {
-        setShowMyModal(false);
+        setShowModal(false);
+    }
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        setShowModal(true);
     }
 
     return (
-        <div className='Resena relative bg-fondoResena text-white w-full'>
-            <h3 className="text-left text-xl font-bold pl-6">Reseña de peliculas</h3>
-            <p className="text-left text-s pl-6">Deja tu opinión</p>
+        <div id="resena" className='Resena relative pt-5 bg-fondoResena text-white w-full'>
+            <h3 className="text-left pl-10 text-xl font-bold">Reseña de peliculas</h3>
+            <p className="text-left text-s pl-10">Deja tu opinión</p>
             <div className="flex w-full h-screen justify-center relative">
-                <img className='absolute h-96 bottom-0 left-0 w-2/6 align-bottom hidden md:inline-block' src={pop} alt="" />
-                <form className='w-1/3 xl:h-full flex flex-col items-center content-center justify-around'>
+                <img className='absolute h-96 bottom-0 left-0 w-2/6 align-bottom hidden mb:inline-block' src={pop} alt="" />
+                <form onSubmit={handleSubmit} className='mb:w-2/3 sm:w-1/3 h-full flex flex-col items-center justify-around'>
                     <div className='w-full h-14'>
                         <fieldset className='w-full h-full border-solid border-2 px-4 py-2 border-violeta rounded-lg'>
                             <legend className='text-xs pr-2 pl-1 font-semibold'>Seleccione película</legend>
-                            <select onChange={changePelicula} className='text-sm text-white font-bold outline-none bg-fondoResena border-none h-full w-full'>
-                                <option value="">Seleccione una película</option> {/* Opción vacía */}
+                            <select required onChange={changePelicula} className='text-sm text-white font-bold outline-none bg-fondoResena border-none h-full w-full'>
+                                <option value="">Seleccione una película</option>
                                 {peliculas.map((pelicula, index) => (
-                                    <option key={index} value={pelicula.title}>{pelicula.title}</option>
+                                    <option key={index} value={index}>{pelicula.title}</option>
                                 ))}
                             </select>
                         </fieldset>
@@ -58,13 +61,13 @@ const Resena = ({ peliculas }) => {
                         </fieldset>
                     </div>
                     <div className='flex justify-between'>
-                        <button type="button" onClick={() => setShowMyModal(true)} className='px-8 md:px-16 py-2 border-2 font-semibold rounded-md border-violeta m-3'>Finalizar</button>
-                        <button className='px-8 md:px-16 py-2 border-2 font-semibold rounded-md border-violeta m-3' type="reset">Reiniciar</button>
+                        <button type="submit" className='px-8 mb:px-16 py-2 border-2 font-semibold rounded-md border-violeta m-3'>Finalizar</button>
+                        <button className='px-8 mb:px-16 py-2 border-2 font-semibold rounded-md border-violeta m-3' type="reset">Reiniciar</button>
                     </div>
                 </form>
-                <img className='absolute h-96 bottom-40 right-0 w-2/6 align-middle hidden md:inline-block' src={pop2} alt="" />
+                <img className='absolute h-96 bottom-40 right-0 w-2/6 align-middle hidden mb:inline-block' src={pop2} alt="" />
             </div>
-            {showModal && <Modal nombre={nombre} pelicula={pelicula.title} cerrarModal={cerrarModal} />}
+            {showModal && <Modal nombre={nombre} pelicula={pelicula} cerrarModal={cerrarModal} />}
         </div>
     )
 }
